@@ -31,8 +31,8 @@ def __proc_np_hv(pred):
     """
 
     pred_binary = (torch.sigmoid(pred[0])>=0.5).float().squeeze(0).cpu().numpy()
-    pred_hmap = torch.sigmoid(pred[1]).squeeze(0).cpu().numpy()
-    pred_vmap = torch.sigmoid(pred[2]).squeeze(0).cpu().numpy()
+    pred_hmap = torch.tanh(pred[1]).squeeze(0).cpu().numpy()
+    pred_vmap = torch.tanh(pred[2]).squeeze(0).cpu().numpy()
 
     h_dir_raw = pred_hmap.astype(np.float32)
     v_dir_raw = pred_vmap.astype(np.float32)
